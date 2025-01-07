@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -29,7 +30,7 @@ class AuthController extends Controller
 
         return response()->json([
             'message' => 'Usuario registrado exitosamente',
-            'user' => $user,
+            'user' => new UserResource($user),
             'token' => $token,
         ]);
     }
